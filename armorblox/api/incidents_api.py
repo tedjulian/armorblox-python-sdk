@@ -1,45 +1,29 @@
-import requests
-from urllib.parse import urlparse
+# -*- coding: utf-8 -*-
 
-ARMORBLOX_INCIDENT_API_PATH = "api/v1beta1/organizations/{}/incidents"
-ARMORBLOX_INCIDENT_API_PAGE_SIZE = 100
-ARMORBLOX_INCIDENT_API_TIME_FORMAT = "%Y-%m-%dT%H:%M:%SZ"
-ARMORBLOX_INSTANCE_NAME = ""
-ARMORBLOX_INSTANCE_URL = ""
 
-class IncidentsApi:
+from armorblox.api.base_api import BaseApi
 
-    def __init__(self):
-        pass
 
-    def list_incidents(self):
+class IncidentsApi(BaseApi):
+    PATH = 'incidents'
+    PAGE_SIZE = 100
+    TIME_FORMAT = '%Y-%m-%dT%H:%M:%SZ'
+
+    def __init__(self, config):
+        super().__init__(config)
+
+    def list(self):
+        #            "from_date": "",
+        #            "to_date": "",
+        # ABUSE_INCIDENT_TYPE
+        # DLP_INCIDENT_TYPE
         params = {
-            "from_date": "",
-            "to_date": "",
-            "page_size": ARMORBLOX_INCIDENT_API_PAGE_SIZE,
-            "page_token": ""
+            'page_size': self.PAGE_SIZE,
+            'page_token': 0,
+            'incidentTypesFilter': 'THREAT_INCIDENT_TYPE',
+            'orderBy': 'DESC',
+            'sortBy': 'DATE',
+            'timeFilter': 'allTime'
         }
 
-        headers = {
-            "x-ab-authorization": "",
-            "Content-Type": "application/json",
-        }
-
-        url = ""
-        if ARMORBLOX_INSTANCE_URL:
-            tenant_name = urlparse(ARMORBLOX_INSTANCE_URL).netloc.split(".")[0]
-            path = ARMORBLOX_INCIDENT_API_PATH.format(tenant_name)
-            if not ARMORBLOX_INSTANCE_URL.endswith("/"):
-                path = "/" + path
-
-            url = ARMORBLOX_INSTANCE_URL + path
-        else:
-            url = "https://{}.armorblox.io/{}".format(ARMORBLOX_INSTANCE_NAME, ARMORBLOX_INCIDENT_API_PATH.format(ARMORBLOX_INSTANCE_NAME))
-
-        response = requests.get(url, headers=headers, params=params)
-        if response.status_code == 200:
-            response_json = response.json()
-            next_page_token = response_json.get("next_page_token", None)
-            return response_json.get("incidents", [])
-        else:
-            return []
+        return self.list_resource(self.PATH, params=params)
