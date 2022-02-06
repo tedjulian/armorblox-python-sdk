@@ -31,7 +31,7 @@ class Config:
             if instance_name:
                 self._instance_name = instance_name
             else:
-                self._instance_name = urlparse(instance_url).netloc.split(".")[0]
+                self._instance_name = urlparse(instance_url).netloc.split('.')[0]
         elif instance_name:
             self._instance_url = self.BASE_INSTANCE_URL.format(instance_name)
             self._instance_name = instance_name
