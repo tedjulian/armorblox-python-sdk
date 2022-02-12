@@ -22,3 +22,13 @@ def instance_url():
 @pytest.fixture
 def sdk_version():
     return '0.1.0.20220201'
+
+
+@pytest.fixture
+def config_params(api_key, instance_name, instance_url, sdk_version):
+    return {
+        'api_key': api_key,
+        'instance_name': instance_name,
+        'instance_url': instance_url,
+        'sdk_version': sdk_version
+    }

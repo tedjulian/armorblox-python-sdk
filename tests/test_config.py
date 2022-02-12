@@ -7,14 +7,7 @@ import pytest
 
 class TestConfig:
     @pytest.fixture
-    def create_config(self, api_key, instance_name, instance_url, sdk_version):
-        config_params = {
-            'api_key': api_key,
-            'instance_name': instance_name,
-            'instance_url': instance_url,
-            'sdk_version': sdk_version
-        }
-
+    def create_config(self, config_params):
         def _create_config(exclude_params=[]):
             for p in exclude_params:
                 config_params.pop(p, None)
