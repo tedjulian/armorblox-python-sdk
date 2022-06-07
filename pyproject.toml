@@ -41,6 +41,8 @@ isolated_build = True
 
 [testenv]
 whitelist_externals = poetry
-deps = pytest >= 3.0.0, <7
-commands = pytest
+deps =
+    pytest >= 3.0.0, <7
+    responses >= 0.18.0
+commands = pytest -ra
 """
