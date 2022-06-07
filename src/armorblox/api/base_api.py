@@ -48,5 +48,20 @@ class BaseApi:
             return response_json.get('incidents', [])
         else:
             return []
+    
+    def get_resource(self, path: str, id: int, headers: dict = None,
+                     params: dict = None, options: dict = None):
+        
+        if options is None:
+            options = {}
+            
+        url = self.endpoint(path, options.get('api_version')) + f"/{id}"
+        
+        response = requests.get(url, headers=self.default_headers(), params=params)
+        
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return {}
 
 

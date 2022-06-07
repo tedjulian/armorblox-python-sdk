@@ -27,3 +27,13 @@ class IncidentsApi(BaseApi):
         }
 
         return self.list_resource(self.PATH, params=params)
+
+    def get(self, id: int):
+        
+        params = {
+            'pageSize': 20
+        }
+
+        return self.get_resource(self.PATH, id, params=params)
+
+
