@@ -60,15 +60,29 @@ class BaseApi:
         else:
             return None, response
     
-    def get_resource(self, path: str, id: int, headers: dict = None,
+    def get_resource(self, path: str, resource_id: str, headers: dict = None,
                      params: dict = None, options: dict = None):
-        
+        """
+
+        Args:
+            path: str
+            resource_id: str
+            headers: dict
+            params: dict
+            options: dict
+
+        Raises:
+            Exception:
+        """
+        h = self.headers()
+        if headers is not None:
+            h.update(headers)
         if options is None:
             options = {}
             
-        url = self.endpoint(path, options.get('api_version')) + f"/{id}"
+        url = self.endpoint(path, options.get('api_version')) + f"/{resource_id}"
         
-        response = requests.get(url, headers=self.default_headers(), params=params)
+        response = requests.get(url, headers=h, params=params)
         
         if response.status_code == 200:
             return response.json()

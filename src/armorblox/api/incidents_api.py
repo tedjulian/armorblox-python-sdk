@@ -41,12 +41,12 @@ class IncidentsApi(BaseApi):
             total_count = response_json.get('total_count', 0)
             return response_json.get('incidents', [])
 
-    def get(self, id: int):
+    def get(self, incident_id: int):
         params = {
             'pageSize': 20
         }
 
-        return self.get_resource(self.PATH, id, params=params)
+        return self.get_resource(self.PATH, str(incident_id), params=params)
 
 
 class ThreatsApi(IncidentsApi):
