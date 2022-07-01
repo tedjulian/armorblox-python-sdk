@@ -1,4 +1,8 @@
+![Armorblox logo]
+
 # Armorblox Python SDK (Alpha)
+
+[![Apache-2 License](https://img.shields.io/badge/license-Apache2-blueviolet)](https://www.apache.org/licenses/LICENSE-2.0)
 
 This is an alpha version of the SDK with limited documentation and no support.
 
@@ -9,7 +13,7 @@ Python 3.5+
 ## Installation
 
 ```
-pip install git+https://github.com/armorblox/armorblox-python-sdk
+pip install armorblox-sdk
 ```
 
 ## Usage
@@ -51,3 +55,24 @@ cd armorblox-python-sdk
 ```
 * Run `poetry install` to install the dependencies
 * Run `tox` to run the tests
+
+## Publishing
+
+#### TestPyPI
+```
+poetry config repositories.test-pypi https://test.pypi.org/legacy/
+poetry config pypi-token.test-pypi <your-TestPyPI-token>
+poetry publish --build -r test-pypi
+```
+
+Use
+```
+pip install --index-url https://test.pypi.org/simple/ --no-deps armorblox
+```
+to make sure the installation works correctly.
+
+#### PyPI
+```
+poetry config pypi-token.pypi <your-PyPI-token>
+poetry publish --build
+```
