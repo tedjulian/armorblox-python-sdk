@@ -2,6 +2,7 @@
 
 # Armorblox Python SDK (Alpha)
 
+[![PyPI version](https://badge.fury.io/py/armorblox-sdk.svg)](https://badge.fury.io/py/armorblox-sdk)
 [![Apache-2 License](https://img.shields.io/badge/license-Apache2-blueviolet)](https://www.apache.org/licenses/LICENSE-2.0)
 
 This is an alpha version of the SDK with limited documentation and no support.
