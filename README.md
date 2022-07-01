@@ -1,4 +1,4 @@
-![Armorblox logo]
+<img src="https://assets.armorblox.com/f/52352/775x159/8fa6246e47/logo_color.svg" width=387 alt="Armorblox logo">
 
 # Armorblox Python SDK (Alpha)
 
