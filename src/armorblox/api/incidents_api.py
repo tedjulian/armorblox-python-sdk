@@ -20,14 +20,13 @@ class IncidentsApi(BaseApi):
         super().__init__(config)
         self._incident_type = incident_type
 
-    def list(self, page_token=None):
-        #   'from_date': '',
-        #   'to_date': '',
-        params = {
-            'orderBy': 'DESC',
-            'sortBy': 'DATE',
-            'timeFilter': 'allTime'
-        }
+    def list(self, page_token=None, params=None):
+        if params is None:
+            params = {
+                'orderBy': 'DESC',
+                'sortBy': 'DATE',
+                'timeFilter': 'allTime'
+            }
         if self._incident_type is not None:
             params['incidentTypesFilter'] = self._incident_type.name
         if page_token is not None:
