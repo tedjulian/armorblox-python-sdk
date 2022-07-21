@@ -20,9 +20,7 @@ class IncidentsApi(BaseApi):
         super().__init__(config)
         self._incident_type = incident_type
 
-    def list(self, page_token = None, params = None):
-        #   'from_date': '',
-        #   'to_date': '',
+    def list(self, page_token=None, params=None):
         if params is None:
             params = {
                 'orderBy': 'DESC',
