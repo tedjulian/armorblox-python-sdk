@@ -5,6 +5,7 @@ description = "Armorblox SDK for Python"
 license="Apache-2.0"
 authors = [
     "Rajat Upadhyaya <45485+urajat@users.noreply.github.com>",
+    "Jayant Upadhyaya <2506956+ujayant@users.noreply.github.com>",
     "Shaunak Phatak <37964968+phatakshaunak@users.noreply.github.com>"
 ]
 readme="README.md"
