@@ -68,7 +68,7 @@ poetry publish --build -r test-pypi
 
 Use
 ```
-pip install --index-url https://test.pypi.org/simple/ --no-deps armorblox
+pip install --index-url https://test.pypi.org/simple/ --no-deps armorblox-sdk
 ```
 to make sure the installation works correctly.
 
