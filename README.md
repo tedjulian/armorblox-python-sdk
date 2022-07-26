@@ -60,9 +60,15 @@ cd armorblox-python-sdk
 ## Publishing
 
 #### TestPyPI
+
+One-time setup
 ```
 poetry config repositories.test-pypi https://test.pypi.org/legacy/
 poetry config pypi-token.test-pypi <your-TestPyPI-token>
+```
+
+Publishing
+```
 poetry publish --build -r test-pypi
 ```
 
@@ -73,7 +79,13 @@ pip install --index-url https://test.pypi.org/simple/ --no-deps armorblox-sdk
 to make sure the installation works correctly.
 
 #### PyPI
+
+One-time setup
 ```
 poetry config pypi-token.pypi <your-PyPI-token>
+```
+
+Publishing
+```
 poetry publish --build
 ```
