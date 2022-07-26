@@ -38,7 +38,8 @@ class IncidentsApi(BaseApi):
         else:
             next_page_token = response_json.get('next_page_token', None)
             total_count = response_json.get('total_count', 0)
-            return response_json.get('incidents', [])
+            incidents = response_json.get('incidents', [])
+            return incidents, next_page_token, total_count
 
     def get(self, incident_id: int):
         params = {
