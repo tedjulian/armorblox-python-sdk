@@ -50,10 +50,10 @@ dlp_incident = c.dlp_incidents.get(44010)
 c = client.Client(api_key='your-api-key-here', instance_name='yourtenantname')
 next_page_token = None
 incidents = []
-threats, next_page_token, count = c.threats.list(page_token=next_page_token)
+threats, next_page_token, total_incident_count = c.threats.list(page_token=next_page_token)
 incidents.append(threats)
 while next_page_token != None:
-    threats, next_page_token, count = client.threats.list(page_token=next_page_token)
+    threats, next_page_token, total_incident_count = client.threats.list(page_token=next_page_token)
     incidents.append(threats)
 
 ```
