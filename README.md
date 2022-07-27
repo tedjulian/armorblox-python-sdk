@@ -52,8 +52,7 @@ next_page_token = None
 incidents = []
 while True:
     threats, next_page_token, total_incident_count = client.threats.list(page_token=next_page_token)
-    if threats:
-        incidents.append(threats)
+    incidents.extend(threats)
     if not next_page_token:
         break
 ```
