@@ -18,11 +18,12 @@ class TestIncidentsApi:
         mocked_responses.add(
             responses.GET, self.base_api_url + IncidentsApi.PATH,
             json={
+                'total_count': 150,
                 'next_page_token': '50',
                 'incidents': [{'a': 1}]
             },
             status=200,
             content_type='application/json')
-        response = self.incidents_api.list()
-        assert response['total_count'] == 150
-        assert response['next_page_token'] == '50'
+        incidents, next_page_token, total_count = self.incidents_api.list()
+        assert total_count == 150
+        assert next_page_token == '50'
