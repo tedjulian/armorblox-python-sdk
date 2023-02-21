@@ -65,11 +65,10 @@ dlp_incident = c.dlp_incidents.get(44010)
 
 
 # Example to fetch all threats using next_page_token
-c = client.Client(api_key='your-api-key-here', instance_name='yourtenantname')
 next_page_token = None
 incidents = []
 while True:
-    threats, next_page_token, total_incident_count = client.threats.list(page_token=next_page_token)
+    threats, next_page_token, total_incident_count = c.threats.list(page_token=next_page_token)
     incidents.extend(threats)
     if not next_page_token:
         break
